@@ -4,9 +4,9 @@ const Productrouter = require("./routes/productRoutes");
 const userRouter = require('./routes/userRoutes');
 const cardRouter = require('./routes/cartRoutes');
 const orderRouter = require('./routes/orderRoutes');
-const cors=require('cors');
+const getOrdersRouter = require('./routes/getOrderRoutes');
+const cors = require('cors');
 const bodyparser = require("body-parser");
-
 
 const app = express();
 app.use(bodyparser.json());
@@ -22,10 +22,10 @@ app.set("view engine", "ejs");
 app.use(express.json());
 
 app.use('/', Productrouter);
-
 app.use('/api/users', userRouter);
 app.use('/api/carts', cardRouter);
 app.use('/api/orders', orderRouter);
+app.use('/api/getorders', getOrdersRouter);
 
 app.listen(3000, () => {
   console.log("server is running on the port 3000");
